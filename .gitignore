@@ -1,0 +1,8 @@
+*.o
+.deps/
+abgx360gui
+Makefile
+config.h
+config.log
+config.status
+stamp-h1
