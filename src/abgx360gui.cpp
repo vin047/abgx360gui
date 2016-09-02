@@ -175,7 +175,7 @@ void PrettyButton::onMouseUp(wxMouseEvent& WXUNUSED(event))
     click = false;
     Refresh();
     if (mSW.Time() > 2500) {
-        mParent->ProcessEvent(*mEvent);
+        mParent->GetEventHandler()->ProcessEvent(*mEvent);
         mSW.Start(0);
     }
     //event.Skip();
@@ -777,37 +777,37 @@ void abgx360gui::CreateGUIControls()
 	WxMenuBar1->Append(ID_MNU_HELP_1669_Mnu_Obj, wxT("&Help"));
 	SetMenuBar(WxMenuBar1);
 
-	SaveVideoFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("Video Files (*video*.iso)|*video*.iso|ISO Files (*.iso)|*.iso|All Files (*.*)|*.*"), wxSAVE | wxOVERWRITE_PROMPT);
+	SaveVideoFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("Video Files (*video*.iso)|*video*.iso|ISO Files (*.iso)|*.iso|All Files (*.*)|*.*"), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
-	OpenVideoFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("Video Files (*video*.iso)|*video*.iso|ISO Files (*.iso)|*.iso|All Files (*.*)|*.*"), wxOPEN | wxFILE_MUST_EXIST);
+	OpenVideoFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("Video Files (*video*.iso)|*video*.iso|ISO Files (*.iso)|*.iso|All Files (*.*)|*.*"), wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 
-	OpenFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("ISO/Stealth/Xex files (*.360, *.000, *.iso, *.bin, *.xex)|*.360;*.000;*.iso;*.bin;*.xex|ISO files (*.360, *.000, *.iso)|*.360;*.000;*.iso|Stealth Files (*.bin, *video*.iso)|*.bin;*video*.iso|Xex Files (*.xex)|*.xex|Video Files (*video*.iso)|*video*.iso|PFI Files (*pfi*.bin)|*pfi*.bin|DMI Files (*dmi*.bin)|*dmi*.bin|SS Files (*ss*.bin)|*ss*.bin|All Files (*)|*"), wxOPEN | wxFILE_MUST_EXIST | wxMULTIPLE);
+	OpenFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("ISO/Stealth/Xex files (*.360, *.000, *.iso, *.bin, *.xex)|*.360;*.000;*.iso;*.bin;*.xex|ISO files (*.360, *.000, *.iso)|*.360;*.000;*.iso|Stealth Files (*.bin, *video*.iso)|*.bin;*video*.iso|Xex Files (*.xex)|*.xex|Video Files (*video*.iso)|*video*.iso|PFI Files (*pfi*.bin)|*pfi*.bin|DMI Files (*dmi*.bin)|*dmi*.bin|SS Files (*ss*.bin)|*ss*.bin|All Files (*)|*"), wxFD_OPEN | wxFD_FILE_MUST_EXIST | wxFD_MULTIPLE);
 
-	SavePFIFileDialogClobber =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("PFI Files (*pfi*.bin)|*pfi*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxSAVE);
+	SavePFIFileDialogClobber =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("PFI Files (*pfi*.bin)|*pfi*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxFD_SAVE);
 
-	OpenSSFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("SS Files (*ss*.bin)|*ss*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxOPEN | wxFILE_MUST_EXIST);
+	OpenSSFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("SS Files (*ss*.bin)|*ss*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 
-	OpenPFIFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("PFI Files (*pfi*.bin)|*pfi*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxOPEN | wxFILE_MUST_EXIST);
+	OpenPFIFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("PFI Files (*pfi*.bin)|*pfi*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 
-	SaveDMIFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("DMI Files (*dmi*.bin)|*dmi*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxSAVE | wxOVERWRITE_PROMPT);
+	SaveDMIFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("DMI Files (*dmi*.bin)|*dmi*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
-	SaveVideoFileDialogClobber =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("Video Files (*video*.iso)|*video*.iso|ISO Files (*.iso)|*.iso|All Files (*.*)|*.*"), wxSAVE);
+	SaveVideoFileDialogClobber =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("Video Files (*video*.iso)|*video*.iso|ISO Files (*.iso)|*.iso|All Files (*.*)|*.*"), wxFD_SAVE);
 
-	OpenDMIFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("DMI Files (*dmi*.bin)|*dmi*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxOPEN | wxFILE_MUST_EXIST);
+	OpenDMIFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("DMI Files (*dmi*.bin)|*dmi*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 
-	SavePFIFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("PFI Files (*pfi*.bin)|*pfi*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxSAVE | wxOVERWRITE_PROMPT);
+	SavePFIFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("PFI Files (*pfi*.bin)|*pfi*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
-	SaveHTMLFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("HTML Files (*.html, *.htm)|*.html;*.htm|All Files (*.*)|*.*"), wxSAVE | wxOVERWRITE_PROMPT);
+	SaveHTMLFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("HTML Files (*.html, *.htm)|*.html;*.htm|All Files (*.*)|*.*"), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
-	SaveTextFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("Text Files (*.txt)|*.txt|All Files (*.*)|*.*"), wxSAVE | wxOVERWRITE_PROMPT);
+	SaveTextFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("Text Files (*.txt)|*.txt|All Files (*.*)|*.*"), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
 	InputDirDialog =  new wxDirDialog(this, wxT("Choose a directory"), wxT(""));
 
-	SaveDMIFileDialogClobber =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("DMI Files (*dmi*.bin)|*dmi*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxSAVE);
+	SaveDMIFileDialogClobber =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("DMI Files (*dmi*.bin)|*dmi*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxFD_SAVE);
 
-	SaveSSFileDialogClobber =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("SS Files (*ss*.bin)|*ss*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxSAVE);
+	SaveSSFileDialogClobber =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("SS Files (*ss*.bin)|*ss*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxFD_SAVE);
 
-	SaveSSFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("SS Files (*ss*.bin)|*ss*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxSAVE | wxOVERWRITE_PROMPT);
+	SaveSSFileDialog =  new wxFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("SS Files (*ss*.bin)|*ss*.bin|.bin Files (*.bin)|*.bin|All Files (*.*)|*.*"), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
 	SetStatusBar(StatusBar);
 	SetTitle(wxT("abgx360 GUI"));
@@ -2560,7 +2560,7 @@ bool DnDInput::OnDropFiles(wxCoord, wxCoord, const wxArrayString& filenames)
                 dndeditbox->AppendText(filenames[i]);
                 dndselect->SetSelection(1);  // Directory
                 event.SetInt(1);
-                dndframe->AddPendingEvent(event);
+                dndframe->GetEventHandler()->AddPendingEvent(event);
               return true;
             }
             else if (wxFileExists(filenames[i])) {
@@ -2582,7 +2582,7 @@ bool DnDInput::OnDropFiles(wxCoord, wxCoord, const wxArrayString& filenames)
         if (realcount) {
             dndselect->SetSelection(0);  // File(s)
             event.SetInt(0);
-            dndframe->AddPendingEvent(event);
+            dndframe->GetEventHandler()->AddPendingEvent(event);
           return true;
         }
     }
