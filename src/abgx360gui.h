@@ -61,6 +61,10 @@
     #include <ddk/ntddstor.h>  // device i/o stuff
 #endif
 
+#ifdef __APPLE__
+    #include <CoreFoundation/CFBundle.h> // for OSX bundle-related stuff
+#endif
+
 ////Dialog Style Start
 #undef abgx360gui_STYLE
 #define abgx360gui_STYLE wxCAPTION | wxSYSTEM_MENU | wxMINIMIZE_BOX | wxCLOSE_BOX

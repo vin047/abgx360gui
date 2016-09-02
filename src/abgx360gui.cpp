@@ -1357,6 +1357,18 @@ void abgx360gui::UIUpdate(wxUpdateUIEvent& WXUNUSED(event))
         if (Maximize->IsChecked()) cmd += wxT("-geometry 80x400+0+0 ");
         cmd += wxT("-e '");
     #endif
+
+    // locate abgx360 binary within an OSX .app bundle
+    #if defined(__APPLE__)
+        CFURLRef abgx360url = CFBundleCopyAuxiliaryExecutableURL(CFBundleGetMainBundle(), CFSTR("abgx360"));
+        char abgx360path[512]; // large size, just in case
+        abgx360path[0] = '\"'; // double quote at start, to escape all spaces in binary path
+        CFURLGetFileSystemRepresentation(abgx360url, true, reinterpret_cast<UInt8*>(&abgx360path[1]), 511);
+        if(abgx360path[1] != '\0')
+            cmd = cmd + abgx360path + "\" -"; // full path to abgx360 binary, plus end double quote, plus hyphen
+        else // string is empty (e.g. not started from an app bundle), use default value. abgx360 binary must be in PATH
+    #endif
+
     cmd += wxT("abgx360 -");
     if (Verbosity->GetCurrentSelection() == 0) cmd += wxT("n"); // low verbosity
     else if (Verbosity->GetCurrentSelection() == 2) cmd += wxT("v"); // high verbosity
