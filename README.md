@@ -22,7 +22,7 @@ NOTE: This is just a GUI, you need to have [abgx360](https://github.com/vin047/a
 **REMEMBER: As of 09/2016, you need to download the [ini file](http://abgx360.xecuter.com/abgx360.ini.zip) and place it 1 folder above your StealthFiles folder. See http://abgx360.xecuter.com/index.php for more details.**
 
 ## OSX Tips:
-`abgx360gui` will only work if the `abgx360` is in your `PATH`. To use, move `abgx360` to a folder included in your system `PATH`. Alternatively, you can package both programs into an app bundle to make it work. Details on how to do this can be found [here](http://vin047.xyz/binaries-to-app-bundle/) or you can download the pre-packaged app bundle under [releases](https://github.com/vin047/abgx360gui/releases).
+`abgx360gui` will only work if the `abgx360` is in your `PATH`. To use, move `abgx360` to a folder included in your system `PATH`. Alternatively, you can package both programs into an app bundle to make it work. Details on how to do this can be found [here](http://vin047.xyz/binaries-to-app-bundle/) or you can download the pre-packaged app bundle [here](https://github.com/vin047/abgx360gui/releases).
 
 ## Linux Tips:
 If you encounter this error:
